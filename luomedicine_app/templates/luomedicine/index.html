@@ -1,0 +1,90 @@
+{% extends "luomedicine/layout.html" %}
+
+{% block body %}
+{% load static %}
+      <!-- ======= Hero Section ======= -->
+  <section id="hero">
+    <div id="heroCarousel" data-bs-interval="5000" class="carousel slide carousel-fade" data-bs-ride="carousel">
+
+      <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        <!-- Slide 1 -->
+        <div class="carousel-item active" style="background-image: url({% static 'assets/img/slide/slide1.jpg' %})">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Luo Medicinal</span></h2>
+              <p class="animate__animated animate__fadeInUp">The Luo community in Kenya has a rich tradition of using medicinal plants to treat various ailments. The Luos are a proud community with a rich cultural heritage, strong family ties, and a prominent role in Kenya's political and social landscape.</p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="carousel-item" style="background-image: url({% static 'assets/img/slide/slide2.jpg' %})">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Luo Community in Kenya</h2>
+              <p class="animate__animated animate__fadeInUp">The Luos are a community of people living in Kenya, primarily in the western part of the country around Lake Victoria.The Luos have a rich culture and history, with strong ties to their traditional way of life. They are known for their unique customs, music, dance, and attire, which often feature bright and colorful fabrics. </p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="carousel-item" style="background-image: url({% static 'assets/img/slide/slide3.JPG' %})">
+          <div class="carousel-container">
+            <div class="container">
+              <h2 class="animate__animated animate__fadeInDown">Luo Treatment Methods</h2>
+              <p class="animate__animated animate__fadeInUp">The Luo community in Kenya has a rich tradition of using various methods for treating illnesses and maintaining good health. They have some common treatment methods for various diseases.</p>
+              <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
+      </a>
+
+      <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+        <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
+      </a>
+
+    </div>
+  </section><!-- End Hero -->
+  <main id="main">
+
+    <!-- ======= About Section ======= -->
+    <section id="about" class="about">
+      <div class="container">
+
+        <div class="row content">
+          <div class="col-lg-6">
+            <h2>Luo Community in Kenya</h2>
+            <h3>Historically, the Luos were known for their fishing skills, as they lived close to Lake Victoria, which is the largest freshwater lake in Africa. However, in recent years, many Luos have diversified into other professions such as farming, business, and politics.</h3>
+          </div>
+          <div class="col-lg-6 pt-4 pt-lg-0">
+            <p>
+              The Luos are a community of people living in Kenya, primarily in the western part of the country around Lake Victoria. They are the third-largest ethnic group in Kenya, after the Kikuyu and Luhya.
+
+The Luos have a rich culture and history, with strong ties to their traditional way of life. They are known for their unique customs, music, dance, and attire, which often feature bright and colorful fabrics.
+            </p>
+            <ul>
+              <li><i class="ri-check-double-line"></i> Traditionally, the Luo wore minimal clothing. Animal hides were used to cover private parts, but there was no stigma (shame) associated with nudity</li>
+              <li><i class="ri-check-double-line"></i> Marriage was traditionally considered to be the most significant event in the lives of both men and women. It was thought inappropriate for anyone to remain unmarried. Large families ensured adequate numbers of workers. The system of polygyny (multiple wives) guaranteed that all people married.</li>
+              <li><i class="ri-check-double-line"></i> Social relations among the Luo are governed by rules of kinship, gender, and age. Descent is patrilineal (traced through the male line) to determine kinship. Kin align themselves for purposes of exchange of goods, marriage, and political alliance</li>
+            </ul>
+            <p class="fst-italic">
+             Stories, legends, riddles, and proverbs are an important part of Luo culture. They are traditionally recited in the siwindhe, which is the home of a (widowed) grandmother. Luo boys and girls gather there in the evenings to be taught the traditions of their culture. In the evenings, after people have returned from their gardens, they gather to tell and listen to stories. In the siwindhe, however, grandmothers preside over storytelling and verbal games. Riddles take the form of competitive exchanges where winners are rewarded by "marrying" girls in a kind of mock (pretend) marriage situation. Friendly arguments often erupt over interpretations of riddles
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section><!-- End About Section -->
+
+  </main><!-- End #main -->
+{% endblock %}
