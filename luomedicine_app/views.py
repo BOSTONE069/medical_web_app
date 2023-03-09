@@ -10,3 +10,7 @@ def index(request):
     :return: The index.html file is being returned.
     """
     return render(request, "luomedicine/index.html")
+
+
+def contact(request):
+    return render(request, "luomedicine/contact.html")
