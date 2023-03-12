@@ -13,4 +13,10 @@ def index(request):
 
 
 def contact(request):
+    """
+    It takes a request, and returns a response
+
+    :param request: The request is an HttpRequest object. It contains metadata about the request
+    :return: The contact.html page is being returned.
+    """
     return render(request, "luomedicine/contact.html")
