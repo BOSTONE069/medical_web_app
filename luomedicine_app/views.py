@@ -20,3 +20,12 @@ def contact(request):
     :return: The contact.html page is being returned.
     """
     return render(request, "luomedicine/contact.html")
+
+def about(request):
+    """
+    It takes a request, and returns a response
+
+    :param request: The request object is an HttpRequest object. It contains metadata about the request
+    :return: The about page is being returned.
+    """
+    return render(request, "luomedicine/about.html")
