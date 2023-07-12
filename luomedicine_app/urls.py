@@ -6,8 +6,8 @@ from . import views
 
 urlpatterns = [
     path("", views.index, name="index"),
-    path("contact", views.contact, name="contact"),
-    path("about", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
+    path("about/", views.about, name="about"),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # default: "Django Administration"
 admin.site.site_header = 'LUO MEDICINE'
