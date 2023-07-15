@@ -1,19 +1,20 @@
-{% extends "luomedicine/layoutabout.html" %}
+{% extends "luomedicine/layout.html" %}
 {% block body %}
 {% load static %}
-<div style="margin: 40px; color: red; font-size: 12px; font-weight: bold">
- <h1>Medicinal Plant List</h1>
+<div style="margin-top: 120px; color: red; font-size: 44px; font-weight: bold; text-align: center;">
+ <h1>Luo Traditional Medicinal Plant List</h1>
 </div>
-<div style="margin: 40px; display: flex; flex-wrap: wrap;">
+
+<div style="margin: 40px; display: flex; flex-wrap: wrap; background-color: #515d6a;">
     <ul style="list-style-type: none; padding: 0;">
         {% for medicinal_plant in medicinal_plants %}
         <li style="flex: 0 0 200px; margin: 10px;">
             <div style="width: 200px; height: 200px; overflow: hidden;">
-                <img src="{{ medicinal_plant.image.url }}" alt="{{ medicinal_plant.title }}" style="max-width: 100%; height: auto; border-radius: 70%;">
+                <img src="{{ medicinal_plant.image.url }}" alt="{{ medicinal_plant.title }}" style="max-width: 200px; height: auto; border-radius: 100%;">
             </div>
-            <h3>Name: {{ medicinal_plant.title }}</h3>
-            <p>Treatment: {{ medicinal_plant.treatment }}</p>
-            <p>Prescription: {{ medicinal_plant.prescription }}</p>
+            <h3 style="color: #fff;">Name: {{ medicinal_plant.title }}</h3>
+            <p style="color: #fff;">Treatment: {{ medicinal_plant.treatment }}</p>
+            <p style="color: #fff;">Prescription: {{ medicinal_plant.prescription }}</p>
         </li>
         {% endfor %}
     </ul>
