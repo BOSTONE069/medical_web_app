@@ -4,4 +4,4 @@ from .models import MedicinalPlant
 class MedicinalPlantForm(forms.ModelForm):
     class Meta:
         model = MedicinalPlant
-        fields = ['title', 'description', 'prescription', 'image']
+        fields = ['title', 'treatment', 'prescription', 'image']

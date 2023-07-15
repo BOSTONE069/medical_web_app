@@ -7,12 +7,12 @@ class MedicinalPlant(models.Model):
     A model representing a medicinal plant.
     """
     title = models.CharField(max_length=100)
-    description = models.TextField()
+    treatment = models.TextField()
     prescription = models.TextField()
-    image = models.ImageField(upload_to='medicinal_plant_images/')
+    image = models.ImageField(upload_to='luomedicine_app/static/medicinal_plant_images/')
 
     def __str__(self):
         """
         Returns the title of the medicinal plant.
         """
-        return self.title
+        return f"{self.title} {self.treatment} {self.prescription}"

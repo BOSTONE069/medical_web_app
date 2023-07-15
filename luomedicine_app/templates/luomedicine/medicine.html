@@ -1,0 +1,21 @@
+{% extends "luomedicine/layoutabout.html" %}
+{% block body %}
+{% load static %}
+<div style="margin: 40px; color: red; font-size: 12px; font-weight: bold">
+ <h1>Medicinal Plant List</h1>
+</div>
+<div style="margin: 40px; display: flex; flex-wrap: wrap;">
+    <ul style="list-style-type: none; padding: 0;">
+        {% for medicinal_plant in medicinal_plants %}
+        <li style="flex: 0 0 200px; margin: 10px;">
+            <div style="width: 200px; height: 200px; overflow: hidden;">
+                <img src="{{ medicinal_plant.image.url }}" alt="{{ medicinal_plant.title }}" style="max-width: 100%; height: auto; border-radius: 70%;">
+            </div>
+            <h3>Name: {{ medicinal_plant.title }}</h3>
+            <p>Treatment: {{ medicinal_plant.treatment }}</p>
+            <p>Prescription: {{ medicinal_plant.prescription }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

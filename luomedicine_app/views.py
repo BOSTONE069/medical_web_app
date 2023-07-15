@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+from .models import MedicinalPlant
 
 # Create your views here.
 def index(request):
@@ -29,3 +29,7 @@ def about(request):
     :return: The about page is being returned.
     """
     return render(request, "luomedicine/about.html")
+
+def medicine(request):
+    medicinal_plants = MedicinalPlant.objects.all()
+    return render(request, "luomedicine/medicine.html", {'medicinal_plants': medicinal_plants})

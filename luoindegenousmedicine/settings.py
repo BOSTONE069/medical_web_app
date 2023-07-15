@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'luomedicine_app',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -122,3 +123,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+JAZZMIN_SETTINGS = {
+    "welcome_sign": "Welcome to the Luo Tradition Admin Control Panel",
+     "site_logo": "assets/img/luoadmin.jpg",
+     "copyright": "LUO TRADITION",
+     "search_model": ["auth.User", "auth.Group"],
+}
