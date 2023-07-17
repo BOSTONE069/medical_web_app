@@ -126,8 +126,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 JAZZMIN_SETTINGS = {
     "welcome_sign": "Welcome to the Luo Tradition Admin Control Panel",
-     "site_logo": "assets/img/luoadmin.jpg",
+     "site_logo": "assets/img/med.jpg",
      "copyright": "LUO TRADITION",
      "search_model": ["auth.User", "auth.Group"],
 }
-
