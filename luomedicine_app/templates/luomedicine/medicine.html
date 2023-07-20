@@ -1,22 +1,34 @@
-{% extends "luomedicine/layout.html" %}
-{% block body %}
-{% load static %}
-<div style="margin-top: 120px; color: red; font-size: 44px; font-weight: bold; text-align: center;">
- <h1>Luo Traditional Medicinal Plant List</h1>
+{% extends "luomedicine/layout.html" %} {% block body %} {% load static %}
+<div
+  style="
+    margin-top: 120px;
+    color: red;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+  "
+>
+  <h1>Luo Traditional Medicinal Plant List</h1>
 </div>
 
-<div style="margin: 40px; display: flex; flex-wrap: wrap; background-color: #515d6a;">
-    <ul style="list-style-type: none; padding: 0;">
-        {% for medicinal_plant in medicinal_plants %}
-        <li style="flex: 0 0 200px; margin: 10px;">
-            <div style="width: 200px; height: 200px; overflow: hidden;">
-                <img src="{{ medicinal_plant.image.url }}" alt="{{ medicinal_plant.title }}" style="max-width: 200px; height: auto; border-radius: 100%;">
-            </div>
-            <h3 style="color: #fff;">Name: {{ medicinal_plant.title }}</h3>
-            <p style="color: #fff;">Treatment: {{ medicinal_plant.treatment }}</p>
-            <p style="color: #fff;">Prescription: {{ medicinal_plant.prescription }}</p>
-        </li>
-        {% endfor %}
-    </ul>
+<div class="container mt-10">
+  <div class="row" style="background-color: #4a5562">
+    {% for medicinal_plant in medicinal_plants %}
+    <div class="col-md-4 mb-4">
+      <div class="d-flex justify-content-center">
+        <img
+          src="{{ medicinal_plant.image.url }}"
+          alt="{{ medicinal_plant.title }}"
+          class="img-fluid rounded-circle"
+          style="max-width: 200px; height: auto"
+        />
+      </div>
+      <h3 class="text-white text-center">{{ medicinal_plant.title }}</h3>
+      <p class="text-white text-center"><b>Treatment:</b> {{ medicinal_plant.treatment }}</p>
+      <p class="text-white text-center"><b>Prescription:</b> {{ medicinal_plant.prescription }}</p>
+    </div>
+    {% endfor %}
+  </div>
 </div>
+
 {% endblock %}
