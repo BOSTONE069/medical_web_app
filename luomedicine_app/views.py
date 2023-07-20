@@ -1,5 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import MedicinalPlant
+from .forms import SubscriptionForm
+from django.core.exceptions import ValidationError
+from django.views.decorators.csrf import csrf_protect
+
+
 
 # Create your views here.
 def index(request):
@@ -33,3 +38,21 @@ def about(request):
 def medicine(request):
     medicinal_plants = MedicinalPlant.objects.all()
     return render(request, "luomedicine/medicine.html", {'medicinal_plants': medicinal_plants})
+
+
+@csrf_protect
+def subscribe(request):
+    if request.method == 'POST':
+        form = SubscriptionForm(request.POST)
+        if form.is_valid():
+            try:
+                form.clean()
+            except ValidationError:
+                # Handle validation error
+                pass
+            else:
+                form.save()
+                return redirect('success', secure=True)  # Redirect to a success page after subscribing
+    else:
+        form = SubscriptionForm()
+    return render(request, 'luomedicine/layout.html', {'form': form})

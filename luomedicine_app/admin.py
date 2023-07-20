@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import MedicinalPlant
+from .models import MedicinalPlant, Subscribe
 from .forms import MedicinalPlantForm
 
 # Register your models here.
@@ -10,3 +10,8 @@ from .forms import MedicinalPlantForm
 class MedicinalPlantAdmin(admin.ModelAdmin):
     form = MedicinalPlantForm
     list_display = ('title', 'treatment', 'prescription', 'image')
+
+
+@admin.register(Subscribe)
+class SubscribeAdmin(admin.ModelAdmin):
+    list_display = ("email",)
