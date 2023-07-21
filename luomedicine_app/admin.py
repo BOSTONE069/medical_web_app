@@ -9,7 +9,7 @@ from .forms import MedicinalPlantForm
 @admin.register(MedicinalPlant)
 class MedicinalPlantAdmin(admin.ModelAdmin):
     form = MedicinalPlantForm
-    list_display = ('title', 'treatment', 'prescription', 'image')
+    list_display = ('title', 'part', 'treatment', 'prescription', 'image')
 
 
 @admin.register(Subscribe)

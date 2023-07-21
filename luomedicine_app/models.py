@@ -14,6 +14,7 @@ class MedicinalPlant(models.Model):
     A model representing a medicinal plant.
     """
     title = models.CharField(max_length=100)
+    part = models.TextField(default='leaves')
     treatment = models.TextField()
     prescription = models.TextField()
     image = models.ImageField(upload_to='luomedicine_app/static/medicinal_plant_images/')
@@ -37,7 +38,7 @@ class MedicinalPlant(models.Model):
 def medicinal_plant_pre_delete(sender, instance, **kwargs):
     # Check if the image exists and delete it before deleting the instance
     if instance.image and default_storage.exists(instance.image.name):
-     default_storage.delete(instance.image.name)
+        default_storage.delete(instance.image.name)
 
 
 # The Subscribe class represents a model for storing email addresses with uniqueness constraint.
