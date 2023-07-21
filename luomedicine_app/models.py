@@ -4,6 +4,7 @@ from django.core.exceptions import ValidationError
 from django.core.files.storage import default_storage
 from django.dispatch import receiver
 from django.db.models.signals import pre_delete
+from django.core.exceptions import PermissionDenied
 
 # Create your models here.
 
@@ -34,9 +35,13 @@ class MedicinalPlant(models.Model):
     :param instance: The "instance" parameter refers to the instance of the MedicinalPlant model that is
     being deleted. It represents the specific object that is being removed from the database
     """
+
 @receiver(pre_delete, sender=MedicinalPlant)
 def medicinal_plant_pre_delete(sender, instance, **kwargs):
-    # Check if the image exists and delete it before deleting the instance
+    # Check if the user has permission to delete the instance
+    if not instance.has_delete_permission():
+        raise PermissionDenied("You do not have permission to delete this instance.")
+     # Check if the image exists and delete it before deleting the instance
     if instance.image and default_storage.exists(instance.image.name):
         default_storage.delete(instance.image.name)
 
