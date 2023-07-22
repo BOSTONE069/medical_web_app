@@ -9,30 +9,19 @@
     font-family: "Times New Roman", Times, serif;
   "
 >
-  <h1>Luo Traditional Medicine</h1>
+  <h1>Medicinal Plant Details</h1>
 </div>
-
 <div class="container mt-10">
-  <div class="row p-10" style="background-color: #4a5562">
-    {% for plant in medicinal_plant %}
-    <div class="col-md-4 mb-2 mt-5">
-      <div class="d-flex justify-content-center">
-        <div class="rounded-circle border border-success border-3 p-0" style="max-width: 200px">
-            <img
-            src="{{ plant.image.url }}"
-            alt="{{ plant.title }}"
-            class="img-fluid rounded-circle"
-            style="width: 100%; height: auto;"
-            />
-         </div>
+  <div class="row" >
+    <div class="col-md-12 d-flex justify-content-center">
+      <div>
+        <h2 class="text-center fw-bold text-decoration-underline">{{ medicinal_plants.title }}</h2>
+        <img src="{{ medicinal_plants.image.url }}" alt="{{ medicinal_plants.title }}" class="img-fluid rounded mx-auto d-block">
+        <p class="text-center fs-3 fw-bold">Part: {{ medicinal_plants.part }}</p>
+        <p class="text-center fs-3 fw-bold">Treatment: {{ medicinal_plants.treatment }}</p>
+        <p class="text-center fs-3 fw-bold">Prescription: {{ medicinal_plants.prescription }}</p>
       </div>
-
-      <h3 class="text-white text-center">{{ plant.title }}</h3>
-      <p class="text-white text-center"><b>Part Used:</b> {{ plant.part}}</p>
-      <p class="text-white text-center"><b>Treatment:</b> {{ plant.treatment }}</p>
-      <p class="text-white text-center"><b>Prescription:</b> {{ plant.prescription }}</p>
     </div>
-    {% endfor %}
   </div>
 </div>
 
