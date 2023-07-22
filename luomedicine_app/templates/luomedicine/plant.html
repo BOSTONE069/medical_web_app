@@ -14,23 +14,23 @@
 
 <div class="container mt-10">
   <div class="row p-10" style="background-color: #4a5562">
-    {% for medicinal_plant in medicinal_plants %}
+    {% for plant in medicinal_plant %}
     <div class="col-md-4 mb-2 mt-5">
       <div class="d-flex justify-content-center">
         <div class="rounded-circle border border-success border-3 p-0" style="max-width: 200px">
             <img
-            src="{{ medicinal_plant.image.url }}"
-            alt="{{ medicinal_plant.title }}"
+            src="{{ plant.image.url }}"
+            alt="{{ plant.title }}"
             class="img-fluid rounded-circle"
             style="width: 100%; height: auto;"
             />
          </div>
       </div>
 
-      <h3 class="text-white text-center"><a href="{% url 'plant' medicinal_plant.id %}" target="_blank"> {{ medicinal_plant.title }}</a></h3>
-      <p class="text-white text-center"><b>Part Used:</b> {{ medicinal_plant.part}}</p>
-      <p class="text-white text-center"><b>Treatment:</b> {{ medicinal_plant.treatment }}</p>
-      <p class="text-white text-center"><b>Prescription:</b> {{ medicinal_plant.prescription }}</p>
+      <h3 class="text-white text-center">{{ plant.title }}</h3>
+      <p class="text-white text-center"><b>Part Used:</b> {{ plant.part}}</p>
+      <p class="text-white text-center"><b>Treatment:</b> {{ plant.treatment }}</p>
+      <p class="text-white text-center"><b>Prescription:</b> {{ plant.prescription }}</p>
     </div>
     {% endfor %}
   </div>

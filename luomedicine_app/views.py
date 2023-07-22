@@ -56,3 +56,18 @@ def subscribe(request):
     else:
         form = SubscriptionForm()
     return render(request, 'luomedicine/layout.html', {'form': form})
+
+
+def plant_view(request, id):
+    """
+    The article_view function takes a request and an id, gets the article with the given id, and renders
+    the article in the template.
+
+    :param request: The request object is the first parameter to the view function. It contains
+    information about the current request, such as the method (GET or POST), the user (if any is logged
+    in), and the GET and POST parameters
+    :param id: the id of the article
+    :return: The article object
+    """
+    medicinal_plants = MedicinalPlant.objects.get(id=id)
+    return render(request, 'luomedicine/plant.html', {'medicinal_plants': medicinal_plants})
