@@ -1,0 +1,27 @@
+{% extends "luomedicine/layout.html" %}
+
+{% block body %}
+{% load static %}
+<div
+  style="
+    margin-top: 120px;
+    color: red;
+    font-size: 44px;
+    font-weight: bold;
+    text-align: center;
+    font-family: "Times New Roman", Times, serif;
+  "
+>
+  <h1>Medicinal Plant Details</h1>
+
+<div class="container mt-10">
+    <div class="row" >
+      <div class="col-md-12 d-flex justify-content-center">
+        <div>
+          <h2 class="text-center fw-bold ">{{ error_message }}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

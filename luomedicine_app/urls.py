@@ -10,7 +10,7 @@ urlpatterns = [
     path("about/", views.about, name="about"),
     path("medicine/", views.medicine, name="medicine"),
     path("food", views.luo_food, name='luofoods'),
-    path("plant/<int:id>/", views.plant_view, name='plant'),
+    path("plant/<int:id>/", views.get_medicinal_plant_by_id, name='plant'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # default: "Django Administration"
 admin.site.site_header = 'LUO MEDICINE'
