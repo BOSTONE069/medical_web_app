@@ -18,3 +18,4 @@ class SubscribeAdmin(admin.ModelAdmin):
 @admin.register(LuoFoods)
 class LuoFoodsAdmin(admin.ModelAdmin):
     list_display = ('title', 'description', 'image')
+    

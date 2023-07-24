@@ -1,3 +1,4 @@
+from logging import Logger
 from django.db import models
 from django.core.validators import validate_email
 from django.core.exceptions import ValidationError
@@ -41,7 +42,15 @@ class LuoFoods(models.Model):
     image = models.ImageField(upload_to='luomedicine_app/static/luo_foods/')
 
     def __str__(self):
-        return f"{self.title} {self.decription}"
+        return f"{self.title} {self.description}"
+    
+@receiver(pre_delete, sender=LuoFoods)
+def luo_foods_delete(sender, instance, **kwargs):
+    if not instance.has_delete_permission():
+        raise PermissionDenied("You do not have the permission to delete the instance.")
+    if instance.image and instance.image.name and default_storage.exists(instance.image.name):
+        default_storage.delete(instance.image.name)
+        Logger.info(f"Image {instance.image.name} has been deleted.")
 
 # The Subscribe class represents a model for storing email addresses with uniqueness constraint.
 class Subscribe(models.Model):
@@ -52,6 +61,8 @@ class Subscribe(models.Model):
     def save(self, *args, **kwargs):
         """
         The function saves the object if the email address is valid, otherwise it raises a ValueError.
+# The `try` block is used to handle exceptions that may occur when validating the email address in the
+# `save` method of the `Subscribe` model.
         """
         try:
             validate_email(self.email)

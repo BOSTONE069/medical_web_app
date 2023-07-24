@@ -19,13 +19,13 @@
   <div class="row p-10" style="background-color: #4a5562;">
     {% for luo_food in luo_foods %}
     <div class="col-md-4 mb-2 mt-5">
-      <div class="d-flex justify-content-center">
+      <div class="d-flex justify-content-center flex-column align-items-center">
         <div class="rounded-circle border border-success border-3 p-0" style="max-width: 200px;">
           <img src="{{ luo_food.image.url }}" alt="{{ luo_food.title }}" class="img-fluid rounded-circle" style="width: 100%; height: auto;">
          </div>
+         <h3 class="text-white text-center mt-2"> {{ luo_food.title }}</h3>
+         <p class="text-white">{{ luo_food.description }}</p>
       </div>
-       <h3 class="text-white text-center"> {{ luo_food.title }}</h3>
-      <p class="text-white text-center"><b>Part Used:</b> {{ luo_food.description }}</p>
     </div>
     {% endfor %}
   </div>
