@@ -26,16 +26,6 @@ class MedicinalPlant(models.Model):
         """
         return f"{self.title} {self.treatment} {self.prescription}"
 
-    """
-    This function deletes the image associated with a MedicinalPlant instance before deleting the
-    instance itself.
-
-    :param sender: The `sender` parameter refers to the model class that is sending the signal. In this
-    case, it is the `MedicinalPlant` model
-    :param instance: The "instance" parameter refers to the instance of the MedicinalPlant model that is
-    being deleted. It represents the specific object that is being removed from the database
-    """
-
 @receiver(pre_delete, sender=MedicinalPlant)
 def medicinal_plant_pre_delete(sender, instance, **kwargs):
     # Check if the user has permission to delete the instance
@@ -45,6 +35,13 @@ def medicinal_plant_pre_delete(sender, instance, **kwargs):
     if instance.image and default_storage.exists(instance.image.name):
         default_storage.delete(instance.image.name)
 
+class LuoFoods(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to='luomedicine_app/static/luo_foods/')
+
+    def __str__(self):
+        return f"{self.title} {self.decription}"
 
 # The Subscribe class represents a model for storing email addresses with uniqueness constraint.
 class Subscribe(models.Model):
