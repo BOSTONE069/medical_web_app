@@ -6,6 +6,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 
+
 # Create your views here.
 def index(request):
     """
@@ -26,6 +27,7 @@ def contact(request):
     """
     return render(request, "luomedicine/contact.html")
 
+
 def about(request):
     """
     It takes a request, and returns a response
@@ -34,6 +36,7 @@ def about(request):
     :return: The about page is being returned.
     """
     return render(request, "luomedicine/about.html")
+
 
 def medicine(request):
     try:
@@ -74,7 +77,9 @@ def subscribe(request):
         form = SubscriptionForm()
     return render(request, 'luomedicine/layout.html', {'form': form})
 
-# This function is responsible for rendering the plant view page for a specific medicinal plantfrom django.http import HttpResponse
+
+# This function is responsible for rendering the plant view page for a specific medicinal plantfrom django.http
+# import HttpResponse
 
 def get_medicinal_plant_by_id(request, id):
     # Get the MedicinalPlant object with the specified id
@@ -86,6 +91,7 @@ def get_medicinal_plant_by_id(request, id):
     # Render the plant.html template with the medicinal_plant object passed as context
     return render(request, 'luomedicine/plant.html', {'medicinal_plant': medicinal_plant})
 
+
 def luo_food(request):
     luo_foods = LuoFoods.objects.all()
-    return render(request, 'luomedicine/foods.html', {'luo_foods':luo_foods})
+    return render(request, 'luomedicine/foods.html', {'luo_foods': luo_foods})
