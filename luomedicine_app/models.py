@@ -13,6 +13,13 @@ import os
 # The MedicinalPlant class represents a medicinal plant with attributes such as title, treatment,
 # prescription, and image.
 class MedicinalPlant(models.Model):
+    
+    def validate_image_file_extension(value):
+        allowed_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.PNG', '.JPG']
+        ext = os.path.splitext(value.name)[1]
+        if not ext.lower() in allowed_extensions:
+            raise ValidationError('Unsupported file extension.  Allowed extensions are: .jpg, .jpeg, .png, .gif')
+        
     """
     A model representing a medicinal plant.
     """
@@ -20,7 +27,7 @@ class MedicinalPlant(models.Model):
     part = models.TextField(default='leaves')
     treatment = models.TextField()
     prescription = models.TextField()
-    image = models.ImageField(upload_to='luomedicine_app/static/medicinal_plant_images/')
+    image = models.ImageField(upload_to='luomedicine_app/static/medicinal_plant_images/', validators=[validate_image_file_extension])
 
     def __str__(self):
         """
