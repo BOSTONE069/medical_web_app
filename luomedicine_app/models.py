@@ -40,21 +40,21 @@ def medicinal_plant_pre_delete(sender, instance, **kwargs):
 
 
 class LuoFoods(models.Model):
-    
+
     def validate_image_file_extension(value):
         allowed_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.PNG', '.JPG']
         ext = os.path.splitext(value.name)[1]
         if not ext.lower() in allowed_extensions:
             raise ValidationError('Unsupported file extension.')
-    
+
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to='luomedicine_app/static/luo_foods/', validators=[validate_image_file_extension])
 
     def __str__(self):
         return f"{self.title} {self.description}"
-    
-    
+
+
 
 
 @receiver(pre_delete, sender=LuoFoods)
