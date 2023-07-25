@@ -7,7 +7,7 @@ from .models import MedicinalPlant, Subscribe, LuoFoods
 class MedicinalPlantForm(forms.ModelForm):
     class Meta:
         model = MedicinalPlant
-        fields = ['title', 'part', 'treatment', 'prescription', 'image']
+        fields = ["title", "part", "treatment", "prescription", "image"]
 
 
 # The `SubscriptionForm` class is a model form that allows users to subscribe by entering their email
@@ -15,10 +15,10 @@ class MedicinalPlantForm(forms.ModelForm):
 class SubscriptionForm(forms.ModelForm):
     class Meta:
         model = Subscribe
-        fields = ['email']
+        fields = ["email"]
 
 
 class LuoFoodsForm(forms.ModelForm):
     class Meta:
         model = LuoFoods
-        fields = ['title', 'description', 'image']
+        fields = ["title", "description", "image"]

@@ -10,7 +10,7 @@ from .forms import MedicinalPlantForm
 @admin.register(MedicinalPlant)
 class MedicinalPlantAdmin(admin.ModelAdmin):
     form = MedicinalPlantForm
-    list_display = ('title', 'part', 'treatment', 'prescription', 'image')
+    list_display = ("title", "part", "treatment", "prescription", "image")
 
 
 @admin.register(Subscribe)
@@ -20,4 +20,4 @@ class SubscribeAdmin(admin.ModelAdmin):
 
 @admin.register(LuoFoods)
 class LuoFoodsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description', 'image')
+    list_display = ("title", "description", "image")

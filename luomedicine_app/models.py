@@ -10,24 +10,29 @@ import os
 
 # Create your models here.
 
+
 # The MedicinalPlant class represents a medicinal plant with attributes such as title, treatment,
 # prescription, and image.
 class MedicinalPlant(models.Model):
-    
     def validate_image_file_extension(value):
-        allowed_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.PNG', '.JPG']
+        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"]
         ext = os.path.splitext(value.name)[1]
         if not ext.lower() in allowed_extensions:
-            raise ValidationError('Unsupported file extension.  Allowed extensions are: .jpg, .jpeg, .png, .gif')
-        
+            raise ValidationError(
+                "Unsupported file extension.  Allowed extensions are: .jpg, .jpeg, .png, .gif"
+            )
+
     """
     A model representing a medicinal plant.
     """
     title = models.CharField(max_length=100)
-    part = models.TextField(default='leaves')
+    part = models.TextField(default="leaves")
     treatment = models.TextField()
     prescription = models.TextField()
-    image = models.ImageField(upload_to='luomedicine_app/static/medicinal_plant_images/', validators=[validate_image_file_extension])
+    image = models.ImageField(
+        upload_to="luomedicine_app/static/medicinal_plant_images/",
+        validators=[validate_image_file_extension],
+    )
 
     def __str__(self):
         """
@@ -47,28 +52,32 @@ def medicinal_plant_pre_delete(sender, instance, **kwargs):
 
 
 class LuoFoods(models.Model):
-
     def validate_image_file_extension(value):
-        allowed_extensions = ['.jpg', '.jpeg', '.png', '.gif', '.PNG', '.JPG']
+        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"]
         ext = os.path.splitext(value.name)[1]
         if not ext.lower() in allowed_extensions:
-            raise ValidationError('Unsupported file extension.')
+            raise ValidationError("Unsupported file extension.")
 
     title = models.CharField(max_length=100)
     description = models.TextField()
-    image = models.ImageField(upload_to='luomedicine_app/static/luo_foods/', validators=[validate_image_file_extension])
+    image = models.ImageField(
+        upload_to="luomedicine_app/static/luo_foods/",
+        validators=[validate_image_file_extension],
+    )
 
     def __str__(self):
         return f"{self.title} {self.description}"
-
-
 
 
 @receiver(pre_delete, sender=LuoFoods)
 def luo_foods_delete(sender, instance, **kwargs):
     if not instance.has_delete_permission():
         raise PermissionDenied("You do not have the permission to delete the instance.")
-    if instance.image and instance.image.name and default_storage.exists(instance.image.name):
+    if (
+        instance.image
+        and instance.image.name
+        and default_storage.exists(instance.image.name)
+    ):
         default_storage.delete(instance.image.name)
         Logger.info(f"Image {instance.image.name} has been deleted.")
 
@@ -82,9 +91,9 @@ class Subscribe(models.Model):
 
     def save(self, *args, **kwargs):
         """
-        The function saves the object if the email address is valid, otherwise it raises a ValueError.
-# The `try` block is used to handle exceptions that may occur when validating the email address in the
-# `save` method of the `Subscribe` model.
+                The function saves the object if the email address is valid, otherwise it raises a ValueError.
+        # The `try` block is used to handle exceptions that may occur when validating the email address in the
+        # `save` method of the `Subscribe` model.
         """
         try:
             validate_email(self.email)

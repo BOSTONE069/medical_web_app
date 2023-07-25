@@ -40,14 +40,16 @@ def about(request):
 
 def medicine(request):
     try:
-        paginator = Paginator(MedicinalPlant.objects.all().order_by('title'), 100)
-        page_number = request.GET.get('page')
+        paginator = Paginator(MedicinalPlant.objects.all().order_by("title"), 100)
+        page_number = request.GET.get("page")
         page_obj = paginator.get_page(page_number)
         medicinal_plants = page_obj.object_list  # Limiting the number of records to 100
     except Exception as e:
         # Handle the exception or error appropriately
-        return render(request, "luomedicine/error.html", {'error_message': str(e)})
-    return render(request, "luomedicine/medicine.html", {'medicinal_plants': medicinal_plants})
+        return render(request, "luomedicine/error.html", {"error_message": str(e)})
+    return render(
+        request, "luomedicine/medicine.html", {"medicinal_plants": medicinal_plants}
+    )
 
 
 @csrf_protect
@@ -62,7 +64,7 @@ def subscribe(request):
     :return: The code is returning a rendered HTML template called 'luomedicine/layout.html' with the
     form variable passed as a context.
     """
-    if request.method == 'POST':
+    if request.method == "POST":
         form = SubscriptionForm(request.POST)
         if form.is_valid():
             try:
@@ -72,26 +74,44 @@ def subscribe(request):
                 pass
             else:
                 form.save()
-                return redirect('success', secure=True)  # Redirect to a success page after subscribing
+                return redirect(
+                    "success", secure=True
+                )  # Redirect to a success page after subscribing
     else:
         form = SubscriptionForm()
-    return render(request, 'luomedicine/layout.html', {'form': form})
+    return render(request, "luomedicine/layout.html", {"form": form})
 
 
 # This function is responsible for rendering the plant view page for a specific medicinal plantfrom django.http
 # import HttpResponse
+
 
 def get_medicinal_plant_by_id(request, id):
     # Get the MedicinalPlant object with the specified id
     try:
         medicinal_plant = MedicinalPlant.objects.get(id=id)
     except MedicinalPlant.DoesNotExist:
-        error_message = 'The requested MedicinalPlant does not exist.'
-        return render(request, 'luomedicine/error.html', {'error_message': error_message}, status=404)
+        error_message = "The requested MedicinalPlant does not exist."
+        return render(
+            request,
+            "luomedicine/error.html",
+            {"error_message": error_message},
+            status=404,
+        )
     # Render the plant.html template with the medicinal_plant object passed as context
-    return render(request, 'luomedicine/plant.html', {'medicinal_plant': medicinal_plant})
+    return render(
+        request, "luomedicine/plant.html", {"medicinal_plant": medicinal_plant}
+    )
 
 
 def luo_food(request):
     luo_foods = LuoFoods.objects.all()
-    return render(request, 'luomedicine/foods.html', {'luo_foods': luo_foods})
+    return render(request, "luomedicine/foods.html", {"luo_foods": luo_foods})
+
+
+def luo_religion(request):
+    return render(request, "luomedicine/religion.html")
+
+
+def luo_ceremonies(request):
+    return render(request, "luomedicine/ceremonies.html")
