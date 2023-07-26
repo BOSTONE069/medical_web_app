@@ -7,7 +7,9 @@ from django.dispatch import receiver
 from django.db.models.signals import pre_delete
 from django.core.exceptions import PermissionDenied
 import os
-
+from django.utils.safestring import mark_safe
+from django.utils.html import escape
+from django.core.validators import FileExtensionValidator
 # Create your models here.
 
 
@@ -100,3 +102,27 @@ class Subscribe(models.Model):
         except ValidationError:
             raise ValueError("Invalid email address")
         super().save(*args, **kwargs)
+
+class LuoReligion(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(upload_to="luomedicine_app/static/luo_religion/")
+    
+    def __str__(self):
+        return f"{self.title} {self.description}"
+    
+
+class LuoCeremonies(models.Model):
+    title = models.CharField(max_length=100)
+    description = models.TextField()
+    image = models.ImageField(
+        upload_to="luomedicine_app/static/luo_ceremonies/",
+        validators=[FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"])]
+    )
+    
+    @property
+    def sanitized_description(self):
+        return mark_safe(escape(self.description))
+    
+    def __str__(self):
+        return f"{self.title} {self.sanitized_description}"

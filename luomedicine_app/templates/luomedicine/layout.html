@@ -53,9 +53,9 @@
             </ul>
           </li>
           <li><a href="{% url 'medicine' %}">Medicine</a></li>
-          <li><a href="services.html">Religion</a></li>
+          <li><a href="{% url 'religion' %}">Religion</a></li>
           <li><a href="{% url 'luofoods' %}">Foods</a></li>
-          <li><a href="pricing.html">Ceremonies</a></li>
+          <li><a href="{% url 'ceremonies' %}">Ceremonies</a></li>
 
 
           <li><a href="{% url 'contact' %}">Contact</a></li>
@@ -131,7 +131,9 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Traditional Luo Medicine</span></strong>. All Rights Reserved
+        &copy; <script>
+          document.write(new Date().getFullYear());
+        </script> Copyright <strong><span>Traditional Luo Medicine</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
