@@ -1,4 +1,4 @@
-<p style="align:center">
+<p align="center">
     <img src="luomedicine_app/static/assets/img/med.jpg">
 </p>
 
