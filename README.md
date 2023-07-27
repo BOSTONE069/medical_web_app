@@ -55,14 +55,14 @@ On the medicine page you can click on the varous medicines thatt have been displ
 This project is licensed under the [MIT License](#https://www.mit.edu/~amini/LICENSE.md).
 
 
-<p style="align:center">
+<p align="center">
     <img src="homepage.png">
 </p>
 
-<p style="align:center">
+<p align="center">
     <img src="medicinepage.png">
 </p>
 
-<p style="align:center">
+<p align="center">
     <img src="plantdetails.png">
 </p>
