@@ -71,6 +71,16 @@ class LuoFoods(models.Model):
         return f"{self.title} {self.description}"
 
 
+    """
+    The above function is a pre-delete signal receiver in Django that checks if the user has permission
+    to delete an instance of the LuoFoods model, and if so, deletes the associated image file and logs
+    the deletion.
+    
+    :param sender: The `sender` parameter refers to the model class that is sending the signal. In this
+    case, the `sender` is `LuoFoods`, which is a Django model
+    :param instance: The `instance` parameter refers to the instance of the `LuoFoods` model that is
+    being deleted. It represents the specific object that is being removed from the database
+    """
 @receiver(pre_delete, sender=LuoFoods)
 def luo_foods_delete(sender, instance, **kwargs):
     if not instance.has_delete_permission():
