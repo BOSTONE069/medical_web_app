@@ -10,6 +10,8 @@ import os
 from django.utils.safestring import mark_safe
 from django.utils.html import escape
 from django.core.validators import FileExtensionValidator
+
+
 # Create your models here.
 
 
@@ -70,7 +72,6 @@ class LuoFoods(models.Model):
     def __str__(self):
         return f"{self.title} {self.description}"
 
-
     """
     The above function is a pre-delete signal receiver in Django that checks if the user has permission
     to delete an instance of the LuoFoods model, and if so, deletes the associated image file and logs
@@ -81,14 +82,16 @@ class LuoFoods(models.Model):
     :param instance: The `instance` parameter refers to the instance of the `LuoFoods` model that is
     being deleted. It represents the specific object that is being removed from the database
     """
+
+
 @receiver(pre_delete, sender=LuoFoods)
 def luo_foods_delete(sender, instance, **kwargs):
     if not instance.has_delete_permission():
         raise PermissionDenied("You do not have the permission to delete the instance.")
     if (
-        instance.image
-        and instance.image.name
-        and default_storage.exists(instance.image.name)
+            instance.image
+            and instance.image.name
+            and default_storage.exists(instance.image.name)
     ):
         default_storage.delete(instance.image.name)
         Logger.info(f"Image {instance.image.name} has been deleted.")
@@ -113,14 +116,15 @@ class Subscribe(models.Model):
             raise ValueError("Invalid email address")
         super().save(*args, **kwargs)
 
+
 class LuoReligion(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
     image = models.ImageField(upload_to="luomedicine_app/static/luo_religion/")
-    
+
     def __str__(self):
         return f"{self.title} {self.description}"
-    
+
 
 class LuoCeremonies(models.Model):
     title = models.CharField(max_length=100)
@@ -129,10 +133,10 @@ class LuoCeremonies(models.Model):
         upload_to="luomedicine_app/static/luo_ceremonies/",
         validators=[FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"])]
     )
-    
+
     @property
     def sanitized_description(self):
         return mark_safe(escape(self.description))
-    
+
     def __str__(self):
         return f"{self.title} {self.sanitized_description}"

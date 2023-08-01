@@ -25,13 +25,15 @@ class LuoFoodsForm(forms.ModelForm):
         model = LuoFoods
         fields = ["title", "description", "image"]
 
+
 # The class `LuoReligionForm` is a model form for the `LuoReligion` model with fields for `title`,
 # `description`, and `image`.
 class LuoReligionForm(forms.ModelForm):
     class Meta:
         model = LuoReligion
         fields = ["title", "description", "image"]
-        
+
+
 # The class LuoCeremoniesForm is a ModelForm that is used to create a form for the LuoCeremonies model
 # with fields for title, description, and image.
 class LuoCeremoniesForm(forms.ModelForm):

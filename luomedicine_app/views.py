@@ -103,7 +103,6 @@ def get_medicinal_plant_by_id(request, id):
         request, "luomedicine/plant.html", {"medicinal_plant": medicinal_plant}
     )
 
-
     """
     The function luo_food retrieves all LuoFoods objects and renders them in the
     "luomedicine/foods.html" template.
@@ -114,6 +113,8 @@ def get_medicinal_plant_by_id(request, id):
     :return: a rendered HTML template called "luomedicine/foods.html" with a context variable
     "luo_foods" that contains all the LuoFoods objects.
     """
+
+
 def luo_food(request):
     luo_foods = LuoFoods.objects.all()
     return render(request, "luomedicine/foods.html", {"luo_foods": luo_foods})
