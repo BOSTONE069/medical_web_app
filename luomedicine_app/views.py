@@ -115,11 +115,9 @@ def get_medicinal_plant_by_id(request, id):
     """
 
 
-from django.utils.html import escape
 def luo_food(request):
     luo_foods = LuoFoods.objects.all()
-    escaped_foods = [escape(food) for food in luo_foods]
-    return render(request, "luomedicine/foods.html", {"luo_foods": escaped_foods})
+    return render(request, "luomedicine/foods.html", {"luo_foods": luo_foods})
 
 
 def luo_religion(request):
@@ -135,13 +133,4 @@ def luo_religion(request):
 
 
 def luo_ceremonies(request):
-    """
-    The function "luo_ceremonies" renders the "ceremonies.html" template for the "luomedicine" app.
-    
-    :param request: The request parameter is an object that represents the HTTP request made by the
-    client. It contains information such as the HTTP method (GET, POST, etc.), headers, user session,
-    and any data sent in the request. In this code snippet, the request parameter is used to render the
-    "ceremon
-    :return: a rendered HTML template called "ceremonies.html" from the "luomedicine" app.
-    """
     return render(request, "luomedicine/ceremonies.html")
