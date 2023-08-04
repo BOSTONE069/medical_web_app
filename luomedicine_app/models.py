@@ -117,6 +117,8 @@ class Subscribe(models.Model):
         super().save(*args, **kwargs)
 
 
+# The `LuoReligion` class represents a model for storing information about Luo religion, including a
+# title, description, and image.
 class LuoReligion(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
@@ -126,6 +128,8 @@ class LuoReligion(models.Model):
         return f"{self.title} {self.description}"
 
 
+# The `LuoCeremonies` class represents ceremonies in the Luo culture, with attributes for title,
+# description, and image.
 class LuoCeremonies(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField()
