@@ -55,6 +55,8 @@ def medicinal_plant_pre_delete(sender, instance, **kwargs):
         default_storage.delete(instance.image.name)
 
 
+# The `LuoFoods` class is a model in a Django application that represents food items with a title,
+# description, and an image file.
 class LuoFoods(models.Model):
     def validate_image_file_extension(value):
         allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"]
@@ -89,9 +91,9 @@ def luo_foods_delete(sender, instance, **kwargs):
     if not instance.has_delete_permission():
         raise PermissionDenied("You do not have the permission to delete the instance.")
     if (
-            instance.image
-            and instance.image.name
-            and default_storage.exists(instance.image.name)
+        instance.image
+        and instance.image.name
+        and default_storage.exists(instance.image.name)
     ):
         default_storage.delete(instance.image.name)
         Logger.info(f"Image {instance.image.name} has been deleted.")
@@ -135,7 +137,9 @@ class LuoCeremonies(models.Model):
     description = models.TextField()
     image = models.ImageField(
         upload_to="luomedicine_app/static/luo_ceremonies/",
-        validators=[FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"])]
+        validators=[
+            FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"])
+        ],
     )
 
     @property
