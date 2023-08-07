@@ -7,6 +7,8 @@ import unittest
 # Create your tests here.
 
 
+# The MedicinalPlantTestCase class contains test methods to verify the functionality and attributes of
+# the MedicinalPlant model.
 class MedicinalPlantTestCase(TestCase):
     def setUp(self):
         self.plant = MedicinalPlant.objects.create(
@@ -40,6 +42,9 @@ class MedicinalPlantTestCase(TestCase):
         self.assertEqual(self.plant.image.path, expected_path)
 
 
+# The `LuoCeremoniesTestCase` class contains test cases for the `LuoCeremonies` class, including
+# methods for testing the sanitized description, string representation, image upload, and invalid
+# image extension.
 class LuoCeremoniesTestCase(unittest.TestCase):
     def setUp(self):
         self.ceremony = LuoCeremonies(
@@ -49,12 +54,19 @@ class LuoCeremoniesTestCase(unittest.TestCase):
         )
 
     def test_sanitized_description(self):
+        """
+        The function `test_sanitized_description` tests the `sanitized_description` method of the
+        `ceremony` object.
+        """
         self.assertEqual(
             self.ceremony.sanitized_description(),
             "Test Description"
         )
 
     def test_str_representation(self):
+        """
+        The function tests the string representation of a Ceremony object.
+        """
         self.assertEqual(
             str(self.ceremony),
             "Test Ceremony Test Description"

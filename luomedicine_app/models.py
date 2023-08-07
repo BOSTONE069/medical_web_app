@@ -78,7 +78,7 @@ class LuoFoods(models.Model):
     The above function is a pre-delete signal receiver in Django that checks if the user has permission
     to delete an instance of the LuoFoods model, and if so, deletes the associated image file and logs
     the deletion.
-    
+
     :param sender: The `sender` parameter refers to the model class that is sending the signal. In this
     case, the `sender` is `LuoFoods`, which is a Django model
     :param instance: The `instance` parameter refers to the instance of the `LuoFoods` model that is
@@ -147,4 +147,10 @@ class LuoCeremonies(models.Model):
         return mark_safe(escape(self.description))
 
     def __str__(self):
+        """
+        The above function returns a string representation of an object, combining its title and
+        sanitized description.
+        :return: The `__str__` method is returning a formatted string that includes the `title` and
+        `sanitized_description` attributes of the object.
+        """
         return f"{self.title} {self.sanitized_description}"
