@@ -9,7 +9,7 @@ import unittest
 
 # The MedicinalPlantTestCase class contains test methods to verify the functionality and attributes of
 # the MedicinalPlant model.
-class MedicinalPlantTestCase(TestCase):
+ class MedicinalPlantTestCase(TestCase):
     def setUp(self):
         self.plant = MedicinalPlant.objects.create(
             title="Plant A",
@@ -26,6 +26,10 @@ class MedicinalPlantTestCase(TestCase):
         self.assertEqual(max_length, 100)
 
     def test_treatment_blank(self):
+        """
+        The function creates a MedicinalPlant object with a blank treatment and asserts that the
+        treatment is empty.
+        """
         plant = MedicinalPlant.objects.create(
             title="Plant B", prescription="Prescription B", image="path/to/image.jpg"
         )

@@ -15,11 +15,17 @@ class MedicinalPlantAdmin(admin.ModelAdmin):
     list_display = ("title", "part", "treatment", "prescription", "image")
 
 
+# The code `@admin.register(Subscribe)` is a decorator that registers the `Subscribe` model with the
+# Django admin site. It tells Django that the `Subscribe` model should be displayed and editable in
+# the admin interface.
 @admin.register(Subscribe)
 class SubscribeAdmin(admin.ModelAdmin):
     list_display = ("email",)
 
 
+# The code `@admin.register(LuoFoods)` is a decorator that registers the `LuoFoods` model with the
+# Django admin site. It tells Django that the `LuoFoods` model should be displayed and editable in the
+# admin interface.
 @admin.register(LuoFoods)
 class LuoFoodsAdmin(admin.ModelAdmin):
     @method_decorator(login_required)
@@ -37,6 +43,9 @@ class LuoFoodsAdmin(admin.ModelAdmin):
     list_display = ("title", "description", "image")
 
 
+# The code `@admin.register(LuoReligion)` is a decorator that registers the `LuoReligion` model with
+# the Django admin site. It tells Django that the `LuoReligion` model should be displayed and editable
+# in the admin interface.
 @admin.register(LuoReligion)
 class ReligionAdmin(admin.ModelAdmin):
     @method_decorator(login_required)
@@ -53,6 +62,8 @@ class ReligionAdmin(admin.ModelAdmin):
 
     list_display = ("title", "description", "image")
 
+# The code you provided is registering the `LuoCeremonies` model with the Django admin site and
+# customizing its admin interface.
 
 @admin.register(LuoCeremonies)
 class CeremoniesAdmin(admin.ModelAdmin):

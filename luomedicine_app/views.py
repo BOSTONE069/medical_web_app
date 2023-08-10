@@ -106,7 +106,7 @@ def get_medicinal_plant_by_id(request, id):
     """
     The function luo_food retrieves all LuoFoods objects and renders them in the
     "luomedicine/foods.html" template.
-    
+
     :param request: The request parameter is an object that represents the HTTP request made by the
     client. It contains information such as the HTTP method (GET, POST, etc.), headers, user session,
     and any data sent in the request
@@ -116,6 +116,16 @@ def get_medicinal_plant_by_id(request, id):
 
 
 def luo_food(request):
+    """
+    The function luo_food retrieves all LuoFoods objects and renders them in a template called
+    "foods.html".
+
+    :param request: The request parameter is an object that represents the HTTP request made by the
+    user. It contains information such as the user's browser, IP address, and any data sent with the
+    request
+    :return: a rendered HTML template called "luomedicine/foods.html" with a context variable
+    "luo_foods" that contains all the LuoFoods objects.
+    """
     luo_foods = LuoFoods.objects.all()
     return render(request, "luomedicine/foods.html", {"luo_foods": luo_foods})
 
@@ -123,7 +133,7 @@ def luo_food(request):
 def luo_religion(request):
     """
     The function "luo_religion" renders the "religion.html" template for the "luomedicine" app.
-    
+
     :param request: The "request" parameter is an object that represents the HTTP request made by the
     user. It contains information about the request, such as the URL, headers, and any data sent with
     the request. In this code snippet, the "request" parameter is used to render the "religion.html"
