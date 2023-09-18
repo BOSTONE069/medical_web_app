@@ -9,7 +9,7 @@ import unittest
 
 # The MedicinalPlantTestCase class contains test methods to verify the functionality and attributes of
 # the MedicinalPlant model.
- class MedicinalPlantTestCase(TestCase):
+class MedicinalPlantTestCase(TestCase):
     def setUp(self):
         self.plant = MedicinalPlant.objects.create(
             title="Plant A",
