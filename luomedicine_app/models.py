@@ -19,11 +19,11 @@ from django.core.validators import FileExtensionValidator
 # prescription, and image.
 class MedicinalPlant(models.Model):
     def validate_image_file_extension(value):
-        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"]
+        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG", ".webp"]
         ext = os.path.splitext(value.name)[1]
         if not ext.lower() in allowed_extensions:
             raise ValidationError(
-                "Unsupported file extension.  Allowed extensions are: .jpg, .jpeg, .png, .gif"
+                "Unsupported file extension.  Allowed extensions are: .jpg, .jpeg, .png, .gif, .webp"
             )
 
     """
@@ -59,7 +59,7 @@ def medicinal_plant_pre_delete(sender, instance, **kwargs):
 # description, and an image file.
 class LuoFoods(models.Model):
     def validate_image_file_extension(value):
-        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"]
+        allowed_extensions = [".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG", ".webp"]
         ext = os.path.splitext(value.name)[1]
         if not ext.lower() in allowed_extensions:
             raise ValidationError("Unsupported file extension.")
@@ -138,7 +138,7 @@ class LuoCeremonies(models.Model):
     image = models.ImageField(
         upload_to="luomedicine_app/static/luo_ceremonies/",
         validators=[
-            FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG"])
+            FileExtensionValidator([".jpg", ".jpeg", ".png", ".gif", ".PNG", ".JPG", ".webp"])
         ],
     )
 
