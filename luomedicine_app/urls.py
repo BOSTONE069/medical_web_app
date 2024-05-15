@@ -13,6 +13,8 @@ urlpatterns = [
     path("religion/", views.luo_religion, name="religion"),
     path("ceremonies/", views.luo_ceremonies, name="ceremonies"),
     path("plant/<int:id>/", views.get_medicinal_plant_by_id, name="plant"),
+    path("subscribe/", views.subscribe, name="subscribe"),
+    path('success/', views.success, name='success'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 # default: "Django Administration"
 admin.site.site_header = "LUO MEDICINE"

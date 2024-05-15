@@ -75,7 +75,7 @@ def subscribe(request):
             else:
                 form.save()
                 return redirect(
-                    "success", secure=True
+                    "success"
                 )  # Redirect to a success page after subscribing
     else:
         form = SubscriptionForm()
@@ -144,3 +144,7 @@ def luo_religion(request):
 
 def luo_ceremonies(request):
     return render(request, "luomedicine/ceremonies.html")
+
+
+def success(request):
+    return render(request, "luomedicine/success.html")
